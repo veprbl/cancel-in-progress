@@ -1,0 +1,26 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - '*'
+    tags:
+      - '*'
+  pull_request:
+  merge_group:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo group ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+        echo cancel-in-progress ${{ github.ref != 'refs/heads/main' }}
+        echo github.ref ${{ github.ref }}
+        sleep 10000000
