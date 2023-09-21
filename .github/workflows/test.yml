@@ -23,4 +23,5 @@ jobs:
         echo group ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
         echo cancel-in-progress ${{ github.ref != 'refs/heads/main' }}
         echo github.ref ${{ github.ref }}
+        true
         sleep 10000000
