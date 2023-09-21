@@ -10,6 +10,7 @@ on:
   merge_group:
   workflow_dispatch:
 
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
@@ -23,5 +24,6 @@ jobs:
         echo group ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
         echo cancel-in-progress ${{ github.ref != 'refs/heads/main' }}
         echo github.ref ${{ github.ref }}
-        true
+    - name: Sleep forever
+      run: |
         sleep 10000000
