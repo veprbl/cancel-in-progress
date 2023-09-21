@@ -25,3 +25,4 @@ jobs:
         echo github.ref ${{ github.ref }}
     - run: |
         sleep 10000000
+        true
